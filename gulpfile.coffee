@@ -6,7 +6,7 @@ webpackConfig = require("./webpack.config.js")
 webpackProductionConfig = require("./webpack.production.config.js")
 map = require 'map-stream'
 touch = require 'touch'
-_ = require 'underscore'
+_ = require 'lodash'
 
 # Load plugins
 $ = require('gulp-load-plugins')()
@@ -104,6 +104,7 @@ gulp.task "webpack-dev-server", ['css'], (callback) ->
     watchOptions:
         aggregateTimeout: 100
         poll: 300
+    historyApiFallback: true
     noInfo: true
   )
   devServer.listen 8080, "0.0.0.0", (err) ->

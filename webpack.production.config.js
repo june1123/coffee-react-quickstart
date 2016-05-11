@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   entry: {
     app: [
-      './src/scripts/router'
+      './src/scripts/index'
     ],
   },
   devtool: 'source-map',

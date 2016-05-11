@@ -1,11 +1,14 @@
+{ Component, PropTypes } = React = require 'react'
+{ connect } = require 'react-redux'
+
 Link = require('react-router').Link
 RouteHandler = require('react-router').RouteHandler
 
 # Provides global navigation for app e.g. the "Hello | Styleguide" at the top.
 module.exports = React.createClass
-  displayName: 'HelloWorld'
   render: ->
+    {state, dispatch, children} = @props
+
     <div>
-      <header><Link to="hello">Hello</Link> | <Link to="styleguide">Styleguide</Link></header>
-      <RouteHandler/>
+      { children and React.cloneElement(children, { state, dispatch }) }
     </div>

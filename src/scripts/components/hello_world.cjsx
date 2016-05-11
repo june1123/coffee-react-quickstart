@@ -116,6 +116,8 @@ module.exports = React.createClass
 
   render: ->
     <div>
+      <Link to={'/sample'}>Sample</Link>
+      <Link to={'/styleguide'}>Style Guide</Link>
       <ChatLogin onInitCompleted={@loginCompleted}/>
       { <Channels onConnectChannel={@onConnectChannel}/> if @state.init } 
       { <ChatMessages /> if @state.channel } 

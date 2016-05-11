@@ -5,7 +5,7 @@ module.exports = {
   entry: [
     "webpack-dev-server/client?http://0.0.0.0:8080",
     'webpack/hot/only-dev-server',
-    './src/scripts/router'
+    './src/scripts/index'
   ],
   devtool: "eval",
   debug: true,
@@ -20,7 +20,10 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
-    extensions: ['', '.js', '.cjsx', '.coffee']
+    extensions: ['', '.js', '.cjsx', '.coffee'],
+    alias: {
+      'app': path.join(__dirname, 'src/scripts')
+    }
   },
   module: {
     loaders: [
