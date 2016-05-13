@@ -29,7 +29,17 @@ module.exports = {
     loaders: [
       { test: /\.css$/, loaders: ['style', 'css']},
       { test: /\.cjsx$/, loaders: ['react-hot', 'coffee', 'cjsx']},
-      { test: /\.coffee$/, loader: 'coffee' }
+      { test: /\.coffee$/, loader: 'coffee' },
+      {
+        test: /\.(eot|woff2?|ttf|svg)$/,
+        loader: 'file',
+        include: path.join(__dirname, 'assets/fonts')
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/,
+        loader: 'file?name=[path][name]___[hash:base64:5].[ext]',
+        include: path.join(__dirname, 'assets/img')
+      }
     ]
   }
 };

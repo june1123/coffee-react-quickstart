@@ -4,6 +4,11 @@ _ = require 'lodash'
 sendbird = require 'sendbird'
 ChatMessages = require './chat-messages'
 
+styles = 
+  chatItem :
+    backgroundColor : '#ff0000'
+    paddingLeft:10
+
 ChatLogin = React.createClass
   getInitialState: ->
     {username: ''}
@@ -26,9 +31,17 @@ ChatLogin = React.createClass
 
   render: ->
     <div>
-      <input type='text' ref={ (ref)=>@_nameInput = ref}/>
-
-    <div onClick={@onPress}>Login</div>
+      <div className="ui icon input loading">
+        <input type="text" placeholder="name..." ref={ (ref)=>@_nameInput = ref} />
+        <i className="search icon"></i>
+      </div>
+      <button className="ui button" onClick={@onPress}>Login</button>
+      <div className="ui animated button" tabIndex="0">
+        <div className="visible content">Next</div>
+        <div className="hidden content">
+          <i className="right arrow icon"></i>
+        </div>
+      </div>
     </div>
 
 Channels = React.createClass
@@ -88,7 +101,7 @@ Channels = React.createClass
   renderChannels : ()->
     _.map @state.channelList, (v, index)=>
       <div onClick={()=>@onChannelPress(v.channel_url)} key={index}>
-        <div>{v.name} ({v.member_count})</div>
+        <div style={styles.chatItem}>{v.name} ({v.member_count})</div>
       </div>
 
   render : ()->

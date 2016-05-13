@@ -1,5 +1,3 @@
-require '../../public/main.css'
-
 # Import our various react tools
 React = require 'react'
 { render } = require 'react-dom'
